@@ -12,7 +12,8 @@ import hello.models.Message;
 
 public class HelloService {
   private static final byte[] PLAINTEXT =
-      "Hello, World!".getBytes(StandardCharsets.UTF_8);
+    "Hello, World!".getBytes(StandardCharsets.UTF_8);
+  private static final Message MESSAGE = new Message("Hello, World!");
 
   @Get("/plaintext")
   public HttpResponse plaintext() {
@@ -23,5 +24,11 @@ public class HelloService {
   @ProducesJson
   public Message json() {
     return new Message("Hello, World!");
+  }
+
+  @Get("/json2")
+  @ProducesJson
+  public Message json2() {
+    return MESSAGE;
   }
 }
